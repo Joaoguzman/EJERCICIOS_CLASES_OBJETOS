@@ -1,19 +1,18 @@
 import uuid
 
 class Financiera:
-    def __init__(self, nombre, saldo_institucional):
+    def __init__(self, nombre, saldo_institucional, cliente1, cliente2, cliente3):
         self.nombre=nombre
         self.id= uuid.uuid4() #genera id automatico
         self.saldo_institucional=saldo_institucional
-        self.clientes = []
-
+        self.clientes = [cliente1, cliente2, cliente3]
     def agregar_cliente(self, nuevo_cliente, linea_credito):
         diez_porciento = int(self.saldo_institucional * 0.1)
         if linea_credito <= diez_porciento: 
             #self.saldo_institucional = self.saldo_institucional - linea_credito
             self.diez_porciento = diez_porciento
             #Nuevo atributo Asignando linea de credito que solicitó
-            nuevo_cliente.linea_credito = linea_credito
+            self.linea_credito = linea_credito
             self.clientes.append(nuevo_cliente)
             return True #retorno verdad si se agregó el cliente a la financiera
         else:
@@ -34,7 +33,9 @@ class Financiera:
         pass
     def abonos_totales(self):
         pass
+    def saldo_institucional(self):
+        return self.saldo_institucional       
     def mostrar_saldo_institucional(self):
-        print("Saldo institucional: ",self.saldo_institucional)
+        print("Saldo institucional: ", self.saldo_institucional)
         
 
