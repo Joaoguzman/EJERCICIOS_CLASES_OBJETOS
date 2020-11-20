@@ -1,30 +1,21 @@
-class Cliente:
-    def __init__(self, nombre, id, saldo):
-        self.nombre=nombre
-        self.id=id
-        self.saldo=saldo
-    def girar(self):
-    
-    def abonar(self):
-        
-    def mostrar_saldo(self):
-        
+import finanzas as fz
 
-class Financiera:
-    def __init__(self, nombre, id, saldo_institucional, clientes):
-        self.nombre=nombre
-        self.id=id
-        self.saldo_institucional=saldo_institucional
-        self.clientes=clientes
-    def agregar_cliente(self):
-        
-    def eliminar_cliente(self):
-        
-    def transferir(self):
-        
-    def giros_totles(self):
-    
-    def abonos_totales(self):
-        
-    def mostrar_saldo_institucional(self):
-        
+maria = fz.Cliente("Maria",10000)
+
+scotiabank = fz.Financiera("Scotiabank",100000000)
+
+#comprueba si se cumple la condicion del 10% 
+#agregar cliente retorna true si se cumple la condicion
+# false si no se cumple y avisa del error
+if scotiabank.agregar_cliente(maria,10000000):
+    print("Agregado")
+else:
+    print("Error")
+#scotiabank.agregar_cliente(juan)
+#scotiabank.agregar_cliente(cliente_1)
+#Imprimiendo mis clientes
+#scotiabank.mis_clientes()
+
+scotiabank.mis_clientes()
+
+scotiabank.mostrar_saldo_institucional()
