@@ -17,8 +17,9 @@ scotiabank.agregar_cliente(cliente1.nombre, cliente1.saldo)
 print(scotiabank.clientes)
 santander = fz.Financiera("Santander",100000000, cliente5, cliente6, cliente7)
 #print(santander.clientes)
-
+print(cliente1.mostrar_saldo)
 cliente1.abonar(9000)
+print(scotiabank.mis_clientes())
 #print(cliente1.mostrar_saldo())
 #print(scotiabank.mis_clientes())
 
