@@ -5,13 +5,23 @@ class Cliente:
         self.nombre=nombre
         self.id= uuid.uuid4() #genera id automatico
         self.saldo=saldo # linea de credito ?
+        self.linea_credito = 0
 
     def girar(self, monto_a_girar):
-        self.saldo = self.saldo - monto_a_girar
-        #verificar que el saldo a girar no exeda con lo que tengo en la cuenta
+        saldo_auxiliar = self.saldo - monto_a_girar
+
+        if saldo_auxiliar >= -1000000: 
+            self.saldo = self.saldo - monto_a_girar
+            return self.saldo
+        else:
+            print("Error, supera el credito! ")
+            print("Su saldo es: ", self.saldo)
+            print("Su linea de credito es: ", self.linea_credito)
+            return False
 
     def abonar(self, monto_a_depositar):
         self.saldo = self.saldo + monto_a_depositar
 
+
     def mostrar_saldo(self):
-        return "{}".format(self.saldo)
+        return "Su saldo es: {}".format(self.saldo)

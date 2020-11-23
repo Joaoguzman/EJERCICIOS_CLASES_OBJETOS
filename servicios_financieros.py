@@ -1,21 +1,49 @@
 import finanzas as fz
 
-maria = fz.Cliente("Maria",10000)
+# 1. Crear 2 financieras de la clase Financiera con nombre y saldo inicial de
+# $100Millones.
 
 scotiabank = fz.Financiera("Scotiabank",100000000)
+bbva = fz.Financiera("BBVA", 100000000)
 
-#comprueba si se cumple la condicion del 10% 
-#agregar cliente retorna true si se cumple la condicion
-# false si no se cumple y avisa del error
-if scotiabank.agregar_cliente(maria,10000000):
-    print("Agregado")
-else:
-    print("Error")
-#scotiabank.agregar_cliente(juan)
-#scotiabank.agregar_cliente(cliente_1)
-#Imprimiendo mis clientes
-#scotiabank.mis_clientes()
+# 2. Crear 4 clientes por cada financiera.
 
-scotiabank.mis_clientes()
+maria = fz.Cliente("Maria",10000)
+juan = fz.Cliente("Juan",10000)
+miguel = fz.Cliente("Miguel",10000)
+ana = fz.Cliente("Ana",10000)
 
-scotiabank.mostrar_saldo_institucional()
+scotiabank.agregar_cliente(maria)
+scotiabank.agregar_cliente(juan)
+scotiabank.agregar_cliente(miguel)
+scotiabank.agregar_cliente(ana)
+
+julia = fz.Cliente("Julia",10000)
+fernando = fz.Cliente("Fernando",10000)
+daniela = fz.Cliente("Daniela",10000)
+alex = fz.Cliente("Alex",10000)
+
+bbva.agregar_cliente(julia)
+bbva.agregar_cliente(fernando)
+bbva.agregar_cliente(daniela)
+bbva.agregar_cliente(alex)
+
+
+# 3. Realizar 3 operaciones por cada cliente de distinto tipo (giro, abono).
+
+bbva.mostrar_saldo_institucional()
+print( bbva.clientes_list[bbva.clientes_list.index(julia)].mostrar_saldo() )
+bbva.clientes_list[bbva.clientes_list.index(julia)].abonar(100000)
+print( bbva.clientes_list[bbva.clientes_list.index(julia)].mostrar_saldo() )
+
+saldo = bbva.clientes_list[bbva.clientes_list.index(julia)].girar(1000000)
+print("Saldo girado: ",saldo)
+#se descuenta de saldo institucional al hacer un gira con saldo negativo
+if saldo:
+    bbva.saldo_institucional = bbva.saldo_institucional + saldo
+
+print( bbva.clientes_list[bbva.clientes_list.index(julia)].mostrar_saldo() )
+
+bbva.mostrar_saldo_institucional()
+
+#bbva.mis_clientes()
