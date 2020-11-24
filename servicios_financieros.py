@@ -32,18 +32,30 @@ bbva.agregar_cliente(alex)
 # 3. Realizar 3 operaciones por cada cliente de distinto tipo (giro, abono).
 
 bbva.mostrar_saldo_institucional()
-print( bbva.clientes_list[bbva.clientes_list.index(julia)].mostrar_saldo() )
-bbva.clientes_list[bbva.clientes_list.index(julia)].abonar(100000)
-print( bbva.clientes_list[bbva.clientes_list.index(julia)].mostrar_saldo() )
+print( bbva.clientes[bbva.clientes.index(julia)].mostrar_saldo() )
+bbva.clientes[bbva.clientes.index(julia)].abonar(100000)
+print( bbva.clientes[bbva.clientes.index(julia)].mostrar_saldo() )
 
-saldo = bbva.clientes_list[bbva.clientes_list.index(julia)].girar(1000000)
-print("Saldo girado: ",saldo)
+saldo_cuenta, giro = bbva.clientes[bbva.clientes.index(julia)].girar(1000000)
+print("Saldo que esta en la cuenta: ",saldo_cuenta) #saldo negativo cuenta
+print("Saldo girado: ", giro)
 #se descuenta de saldo institucional al hacer un gira con saldo negativo
-if saldo:
-    bbva.saldo_institucional = bbva.saldo_institucional + saldo
-
-print( bbva.clientes_list[bbva.clientes_list.index(julia)].mostrar_saldo() )
+if saldo_cuenta:
+    bbva.saldo_institucional += saldo_cuenta
 
 bbva.mostrar_saldo_institucional()
+print( bbva.clientes[bbva.clientes.index(julia)].mostrar_saldo() )
 
-#bbva.mis_clientes()
+abono = bbva.clientes[bbva.clientes.index(julia)].abonar(2500000)
+
+if abono:
+    bbva.saldo_institucional += abono
+print( bbva.clientes[bbva.clientes.index(julia)].mostrar_saldo() )
+bbva.mostrar_saldo_institucional()
+# 4. Realizar giros en dos clientes que demuestren que el saldo no puede ser
+# menor a -1000000.
+
+print( bbva.clientes[bbva.clientes.index(daniela)].mostrar_saldo() )
+bbva.transferir(julia, bbva, daniela, 1000000)
+print( bbva.clientes[bbva.clientes.index(daniela)].mostrar_saldo() )
+print( bbva.clientes[bbva.clientes.index(julia)].mostrar_saldo() )

@@ -12,7 +12,7 @@ class Cliente:
 
         if saldo_auxiliar >= -1000000: 
             self.saldo = self.saldo - monto_a_girar
-            return self.saldo
+            return self.saldo, monto_a_girar
         else:
             print("Error, supera el credito! ")
             print("Su saldo es: ", self.saldo)
@@ -21,7 +21,7 @@ class Cliente:
 
     def abonar(self, monto_a_depositar):
         self.saldo = self.saldo + monto_a_depositar
-
+        return monto_a_depositar
 
     def mostrar_saldo(self):
-        return "Su saldo es: {}".format(self.saldo)
+        return "Su saldo de {} es: {}".format(self.nombre ,self.saldo)
