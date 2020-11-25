@@ -50,18 +50,20 @@ class Financiera:
             print("Linea de Credito: ", cliente.linea_credito)
         
     def transferir(self,c_origen, b_destino ,c_destino, monto):
-        try:
-            s_inst, giro = self.clientes[self.clientes.index(c_origen)].girar(monto)
-            #se descuenta de saldo institucional al hacer un gira con saldo negativo
-            if s_inst:
-                self.saldo_institucional += s_inst
-                abono = b_destino.clientes[b_destino.clientes.index(c_destino)].abonar(giro)
-                if abono:
-                    b_destino.saldo_institucional += abono
-                print("Transferencia exitosa")
-                
-        except TypeError:
-            print("Error!, monto a abonar exede")
+        print(c_origen.nombre, " está transfiriendo ", monto, " a ", c_destino.nombre)
+        giro = self.clientes[self.clientes.index(c_origen)].girar(monto)
+        #se descuenta de saldo institucional al hacer un gira con saldo negativo
+        if giro:
+            print(giro)
+            #Actualizando saldo institucional de financiera de origen
+            print("saldo giro: ", giro)
+            self.saldo_institucional -= giro
+            #abonando en cuenta de destino
+            abono = b_destino.clientes[b_destino.clientes.index(c_destino)].abonar(giro)
+            #Actualizando saldo institucional de financiera destino
+            b_destino.saldo_institucional += abono
+            print("Transferencia exitosa")
+        
         
     def giros_totles(self):
         pass
@@ -76,6 +78,6 @@ class Financiera:
 
     @saldo_institucional.setter
     def saldo_institucional(self, saldo_institucional):
-        print("cambiando atributo encapsulado saldo_institucional")
+        #print("cambiando atributo encapsulado saldo_institucional")
         self.__saldo_institucional = saldo_institucional
 
