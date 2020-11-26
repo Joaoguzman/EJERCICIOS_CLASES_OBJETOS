@@ -87,6 +87,7 @@ class Guardia:
         self.inicio_jornada = []
         self.fin_jornada = []
         self.registro = {}
+        self.registro_visita = []
         
     def comenzar_turno(self):
         # return hora de comienzo de trabajo
@@ -123,9 +124,10 @@ class Guardia:
         else:
             print("debe elegir una entrada")
     
-    def registrar_visita(self):
+    def registrar_visita(self, nombre_visita, patente):
         # registra visitas entrantes y salientes ( unidad habitacional de destino/origen )
-        pass
+        registro_dia =  nombre_visita + " - " + patente
+        self.registro_visita.append(registro_dia)
     
 
 # casa1 = UnidadHabitacional( 1A, 120, ["pepa", "popi", "pancha"], 4)
