@@ -11,8 +11,8 @@ class Condominio:
         self.lista_guardias = []
         self.num_unidades_habitacionales = num_unidades_habitacionales
         self.lista_unidades = lista_unidades
-        self.cuenta_corriente = cuenta_corriente
-        self.resgistro_gasto_comun = {} #diccionario { "mes": monto de gasto comun}
+       # self.cuenta_corriente = cuenta_corriente
+        self.registro_gasto_comun = {} #diccionario { "mes": monto de gasto comun}
         self.lista_residente = []
         self.lista_personal_mantenimiento = lista_personal_mantenimiento
         #self.id = uuid.uuid4() 
@@ -20,23 +20,35 @@ class Condominio:
         
     def get_direccion(self):
         # retorna direccion
-        pass
-    
-    def set_direccion(self):
+        return self.direccion
+
+    def set_direccion(self, direccion_nueva):
         # cambia la direccion por una nueva
-        pass
+        self.direccion = direccion_nueva
     
-    def set_administrador(self):
+    def set_administrador(self, administrador_extraer, administrador_incluir):
         # cambia un administrador por uno nuevo de la lista_administrador
-        pass
+        self.lista_administrador.remove(administrador_extraer)
+        self.lista_administrador.append(administrador_incluir)
     
     def get_administrador(self):
         # retorna lista de administradores
+        return self.lista_administrador
+    
+    def agregar_guardia(self, nuevo_guardia):
+        #agregar guardia a lista_guardia
+        #considerar numero de guardia predefinido >> num_guardia <<
+        self.lista_guardias.append(nuevo_guardia)
         pass
     
-    def del_guardia(self):
+    def del_guardia(self, rut_guardia):
         #borra el guardia de la lista_guardia
-        pass
+        for guardia in self.lista_guardias:
+            print(guardia)
+            if rut_guardia == guardia.rut:
+                self.lista_guardias.remove(guardia)
+            else:
+                print("Guardia no está en la lista")
 
     def get_guardias(self):
         # retorna lista de los guardias agregados
@@ -63,10 +75,6 @@ class Condominio:
         #por mes / todo
         pass
 
-    def agregar_guardia(self):
-        #agregar guardia a lista_guardia
-        #considerar numero de guardia predefinido >> num_guardia <<
-        pass
 
 
 #Creación de clases Guardia, UnidadHabitacional, CuentaCorriente con 3 atributos y 4 métodos.
@@ -102,13 +110,13 @@ class UnidadHabitacional:
 
         self.numero_identificador = numero_identificador
         self.metros_cuadrados = metros_cuadrados
-        self.lista_habitantes = lista_habitantes
+        self.lista_habitantes = []
         self.num_vehiculos = num_vehiculos # ***** podria estar en condominio el numero total de estacionamientos
         
     
-    def agregar_habitante(self):
+    def agregar_habitante(self, nombre, apellido, rut):
         #agrega un habitante nuevo a lista_habitante
-        pass
+        self.lista_habitantes.append(tuple(nombre, apellido, rut))
     
     def agregar_vehiculo(self):
         #agregar un vehiculo a lista de vehiculos
@@ -147,3 +155,14 @@ class CuentaCorriente:
     def metodo4(self):
         pass
 
+
+condominio1 = Condominio("calle 3", ["a", "b" , "c"], 7, 5, ["a", "b"], ["a", "b"], ["1", "2", "3"], 999)
+guardia1 = Guardia("joao", "guzman", "19124333-1", "las brisas")
+guardia2 = Guardia("joao", "guzman", "19124333-3", "las brisas")
+
+condominio1.agregar_guardia(guardia1)
+condominio1.agregar_guardia(guardia2)
+condominio1.del_guardia("19124333-1")
+print(condominio1.lista_guardias)
+for guardia in condominio1.lista_guardias:
+    print(guardia.rut)
