@@ -1,12 +1,12 @@
 import uuid
 
 class Condominio:
-    def __init__(self, direccion, lista_administrador, num_guardias, 
+    def __init__(self, direccion, administrador, num_guardias, 
                 num_unidades_habitacionales, lista_unidades,
                 lista_residentes, lista_personal_mantenimiento, id_condominio):
 
         self.direccion = direccion
-        self.lista_administrador = lista_administrador #recibe una lista de nombre de administradores 
+        self.lista_administrador = administrador #recibe nombre de administrador
         self.num_guardias = num_guardias
         self.lista_guardias = []
         self.num_unidades_habitacionales = num_unidades_habitacionales
@@ -39,7 +39,7 @@ class Condominio:
         #agregar guardia a lista_guardia
         #considerar numero de guardia predefinido >> num_guardia <<
         self.lista_guardias.append(nuevo_guardia)
-        pass
+        
     
     def del_guardia(self, rut_guardia):
         #borra el guardia de la lista_guardia
@@ -51,29 +51,40 @@ class Condominio:
                 print("Guardia no está en la lista")
 
     def get_guardias(self):
+        return self.lista_guardias
         # retorna lista de los guardias agregados
-        pass
     
     def get_unidades(self):
+        return self.lista_unidades
         # retorna la lista de las unidades habitacionales
-        pass
+
     
     def agregar_residente(self):
         #agregar residente a lista_residente
         pass
     
-    def agregar_personal_mantenimiento(self):
+    def agregar_personal_mantenimiento(self, nuevo_personal_mantenimiento):
+        self.lista_personal_mantenimiento.append(nuevo_personal_mantenimiento)
         #agregar personal a lista_personal mantenimiento
-        pass
     
-    def calcular_gasto_comun(self):
+    def calcular_gasto_comun(self, num_unidades_habitacionales,valor): #cálculo aproximado mientras agregamos sueldos y gastos
+        return valor / num_unidades_habitacionales
         #calcular gasto comun del condominio
-        pass
+
     
-    def imprimir_gasto_comun(self):
-        #imprime informacion de gasto comun
-        #por mes / todo
-        pass
+    def imprimir_lista_personal(self):
+        print("Lista Personal Condominio")
+        print("")
+        for administrador in self.lista_administrador:
+            print("Administrador: ", administrador)
+        print("")
+        for guardia in self.lista_guardias:
+            print("Lista Guardias: ", guardia.nombre)
+        print("")
+        for personal_mantenimiento in self.lista_personal_mantenimiento:
+            print("Lista Personal Mantenimiento: ", personal_mantenimiento)    
+
+        #imprime lista completa del personal del condominio 
 
 
 
@@ -166,3 +177,6 @@ condominio1.del_guardia("19124333-1")
 print(condominio1.lista_guardias)
 for guardia in condominio1.lista_guardias:
     print(guardia.rut)
+condominio1.agregar_personal_mantenimiento("Daniela Corvalan")
+
+condominio1.imprimir_lista_personal()
