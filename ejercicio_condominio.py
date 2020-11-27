@@ -132,8 +132,6 @@ class UnidadHabitacional:
         pass
     
 
-
-
 class CuentaCorriente:
 
     def __init__(self, banco, numero_cuenta, nombre_condominio):
@@ -156,7 +154,37 @@ class CuentaCorriente:
         pass
 
 
-condominio1 = Condominio("calle 3", ["a", "b" , "c"], 7, 5, ["a", "b"], ["a", "b"], ["1", "2", "3"], 999)
+class Terreno:
+
+    def __init__(self, direccion, superficie_m2, tipo_superficie, potencial_terreno,
+                valor, rol):
+        self.direccion = direccion
+        self.__superficie_m2 = superficie_m2
+        self.__tipo_superficie = tipo_superficie
+        self.__potencial_terreno = potencial_terreno
+        self.__valor = valor
+        self.__rol = rol
+
+    def get_rol(self):
+        return self.__rol
+
+    def get_tipo_superficie(self):
+        return self.__tipo_superficie
+    
+    def get_superficie_m2(self):
+        return self.__superficie_m2
+
+    def get_valor(self):
+        return self.__valor
+    
+    def get_potencial_terreno(self):
+        return self.__potencial_terreno
+
+    def set_potencial_terreno(self, nuevo_potencial):
+        self.__potencial_terreno = nuevo_potencial
+
+condominio1 = Condominio("calle 3", ["a", "b" , "c"], 7, 5, ["a", "b"],
+                        ["a", "b"], ["1", "2", "3"], 999)
 guardia1 = Guardia("joao", "guzman", "19124333-1", "las brisas")
 guardia2 = Guardia("joao", "guzman", "19124333-3", "las brisas")
 
@@ -166,3 +194,13 @@ condominio1.del_guardia("19124333-1")
 print(condominio1.lista_guardias)
 for guardia in condominio1.lista_guardias:
     print(guardia.rut)
+
+
+
+terreno1 = Terreno("Av. mar #14656", 10000, "Regado R1", "Habitacional", 10000000, "573-26")
+
+print(terreno1.get_rol())
+print(terreno1.get_potencial_terreno())
+terreno1.set_potencial_terreno("Agricola")
+print(terreno1.get_potencial_terreno())
+
