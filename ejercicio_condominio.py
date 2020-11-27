@@ -1,5 +1,5 @@
 
-import Condominio as cd
+import Condominio as cd 
 
 # casa1 = UnidadHabitacional( 1A, 120, ["pepa", "popi", "pancha"], 4)
 
@@ -21,7 +21,7 @@ condominio1.imprimir_lista_personal()
 guardia1.comenzar_turno()
 guardia1.terminar_turno()
 
-guardia1.ver_registro(entrada=True, salida=True)
+guardia1.ver_registro()
 
 terreno1 = cd.Terreno("Av. mar #14656", 10000, "Regado R1", "Habitacional", 10000000, "573-26")
 
@@ -30,3 +30,7 @@ print(terreno1.get_potencial_terreno())
 terreno1.set_potencial_terreno("Agricola")
 print(terreno1.get_potencial_terreno())
 
+
+condominio_vertical1 = cd.CondominioVertical("Torres del Mar")
+
+print(condominio_vertical1.nombre)

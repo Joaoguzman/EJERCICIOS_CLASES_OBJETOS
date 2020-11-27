@@ -1,3 +1,5 @@
+
+
 class Condominio:
     def __init__(self, direccion, administrador, num_guardias, 
                 num_unidades_habitacionales, lista_unidades,
