@@ -95,22 +95,50 @@ class Guardia:
         self.apellido = apellido
         self.rut = rut
         self.nombre_condominio = nombre_condominio
+        self.inicio_jornada = []
+        self.fin_jornada = []
+        self.registro = {}
+        self.registro_visita = []
         
     def comenzar_turno(self):
         # return hora de comienzo de trabajo
-        pass
+        from datetime import datetime
+        hoy = datetime.now()
+        fecha = str(hoy.day)+"/"+str(hoy.month) +"/"+str(hoy.year)
+        hora = str(hoy.hour)+":"+ str(hoy.minute) +":"+ str(hoy.second)
+        self.inicio_jornada.append(fecha + " | " +hora)
+        list = [hora]
+        self.registro[fecha] = list
     
     def terminar_turno(self):
         # return hora de finalizacion de turno y duracion de jornada
-        pass
+        from datetime import datetime
+        hoy = datetime.now()
+        fecha = str(hoy.day)+"/"+str(hoy.month) +"/"+str(hoy.year)
+        hora = str(hoy.hour)+":"+ str(hoy.minute) +":"+ str(hoy.second)
+        self.fin_jornada.append(fecha + " | " +hora)
+        self.registro[fecha].append(hora)
     
-    def ronda_vigilancia(self):
+    def ver_registro(self, entrada=False, salida=False):
         # recorrer condominio
-        pass
+        if salida and entrada:
+            print("mostrando entra y salida")
+            for indice,dia in enumerate(self.registro.items()):
+                print(indice," ",dia)
+        elif entrada:
+            for entrada in self.inicio_jornada:
+                print(entrada)
+        elif salida:
+            print("Mostrando salida")
+            for entrada in self.fin_jornada:
+                print(entrada)
+        else:
+            print("debe elegir una entrada")
     
-    def registrar_visita(self):
+    def registrar_visita(self, nombre_visita, patente):
         # registra visitas entrantes y salientes ( unidad habitacional de destino/origen )
-        pass
+        registro_dia =  nombre_visita + " - " + patente
+        self.registro_visita.append(registro_dia)
     
 
 # casa1 = UnidadHabitacional( 1A, 120, ["pepa", "popi", "pancha"], 4)
@@ -177,6 +205,32 @@ condominio1.del_guardia("19124333-1")
 print(condominio1.lista_guardias)
 for guardia in condominio1.lista_guardias:
     print(guardia.rut)
+<<<<<<< HEAD
 condominio1.agregar_personal_mantenimiento("Daniela Corvalan")
 
 condominio1.imprimir_lista_personal()
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+guardia1.comenzar_turno()
+guardia1.terminar_turno()
+
+guardia1.ver_registro(entrada=True, salida=True)
+>>>>>>> 25-11-guardia
