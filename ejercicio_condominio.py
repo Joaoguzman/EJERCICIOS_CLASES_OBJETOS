@@ -233,36 +233,14 @@ condominio1.del_guardia("19124333-1")
 print(condominio1.lista_guardias)
 for guardia in condominio1.lista_guardias:
     print(guardia.rut)
-<<<<<<< HEAD
 condominio1.agregar_personal_mantenimiento("Daniela Corvalan")
 
 condominio1.imprimir_lista_personal()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 guardia1.comenzar_turno()
 guardia1.terminar_turno()
 
 guardia1.ver_registro(entrada=True, salida=True)
-=======
-
-
 
 terreno1 = Terreno("Av. mar #14656", 10000, "Regado R1", "Habitacional", 10000000, "573-26")
 
@@ -271,4 +249,3 @@ print(terreno1.get_potencial_terreno())
 terreno1.set_potencial_terreno("Agricola")
 print(terreno1.get_potencial_terreno())
 
->>>>>>> 25-11-Terreno
