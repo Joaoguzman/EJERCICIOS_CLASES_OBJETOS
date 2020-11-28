@@ -3,26 +3,29 @@ class Terreno:
     def __init__(self, direccion, superficie_m2, tipo_superficie, potencial_terreno,
                 valor, rol):
         self.direccion = direccion
-        self.__superficie_m2 = superficie_m2
-        self.__tipo_superficie = tipo_superficie
-        self.__potencial_terreno = potencial_terreno
-        self.__valor = valor
-        self.__rol = rol
+        self.superficie_m2 = superficie_m2
+        self.tipo_superficie = tipo_superficie
+        self.potencial_terreno = potencial_terreno
+        self.valor = valor
+        self.rol = rol
 
     def get_rol(self):
-        return self.__rol
+        return self.rol
 
     def get_tipo_superficie(self):
-        return self.__tipo_superficie
+        return self.tipo_superficie
     
     def get_superficie_m2(self):
-        return self.__superficie_m2
+        return self.superficie_m2
 
     def get_valor(self):
-        return self.__valor
+        return self.valor
     
     def get_potencial_terreno(self):
-        return self.__potencial_terreno
+        return self.potencial_terreno
 
     def set_potencial_terreno(self, nuevo_potencial):
-        self.__potencial_terreno = nuevo_potencial
+        self.potencial_terreno = nuevo_potencial
+
+    def get_direccion(self):
+        return self.direccion
