@@ -18,10 +18,14 @@ class CondominioVertical(Terreno, Condominio):
         
         #agregar un 6to atributo
 
-    def get_num_departamentos(self):
-        return self.num_departamentos
-
     def get_nombre(self):
         return self.nombre
 
+    def get_total_unidades(self):
+        return self.num_unidades_habitacionales
+
+    def informacion(self):
+        print("Nombre: ", self.nombre)
+        print("Administradors: ", self.lista_administrador)
+        print("Direccion: ", self.direccion)
 

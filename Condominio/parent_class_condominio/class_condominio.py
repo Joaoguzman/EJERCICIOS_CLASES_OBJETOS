@@ -54,7 +54,7 @@ class Condominio:
         return self.lista_guardias
         # retorna lista de los guardias agregados
     
-    def get_unidades(self):
+    def get_tipo_unidades(self):
         return self.lista_unidades
         # retorna la lista de las unidades habitacionales
 
