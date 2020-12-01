@@ -6,14 +6,17 @@ class CuentaCorriente:
         self.saldo = 0
 
     def pagar(self):
-        # 
+        print("Procesando pago")
         pass
     
-    def Abonar(self):
-        pass
+    def abonar(self, monto_entrada):
+        self.saldo = self.saldo + monto_entrada
+        print("Monto Abonado")
     
-    def Girar(self):
-        pass
+    def girar(self, monto_salida):
+        if monto_salida < self.saldo:
+            self.saldo = self.saldo - monto_salida
+
     
-    def metodo4(self):
-        pass
+    def muestra_saldo(self):
+        print("Muchos millones: ", self.saldo)
