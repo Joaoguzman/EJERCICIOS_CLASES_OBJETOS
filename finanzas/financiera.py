@@ -5,8 +5,7 @@ class Cliente:
         self.nombre=nombre
         self.id= uuid.uuid4() #genera id automatico
         self.saldo=saldo # linea de credito ?
-    @property
-    def saldo(self):
+        def saldo(self):
         return self.saldo
     @saldo.setter
     def girar(self, monto_a_girar):
@@ -19,8 +18,9 @@ class Cliente:
     def mostrar_saldo(self):
         return "{}".format(self.saldo)
 
-class Financiera:
+class Financiera(Cliente):
     def __init__(self, nombre, saldo_institucional, cliente1, cliente2, cliente3):
+        Cliente.__init__(self, nombre, saldo)
         self.nombre=nombre
         self.id= uuid.uuid4() #genera id automatico
         self.saldo_institucional=saldo_institucional
