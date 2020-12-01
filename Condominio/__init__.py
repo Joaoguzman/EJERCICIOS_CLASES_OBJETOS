@@ -1,2 +1,3 @@
 from .parent_class_condominio import *
+from .parent_class_condominio import CuentaCorriente
 from .class_condominio_vertical import CondominioVertical

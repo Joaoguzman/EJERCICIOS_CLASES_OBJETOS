@@ -1,23 +1,53 @@
+import uuid
+
+
+class CuentaCorriente:
+
+    def __init__(self, banco, numero_cuenta):
+        self.banco = banco
+        self.numero_cuenta = numero_cuenta
+        self.saldo = 0
+
+    def pagar(self):
+        # 
+        pass
+    
+    def Abonar(self):
+        pass
+    
+    def Girar(self):
+        pass
+    
+    def metodo4(self):
+        pass
+
 
 
 class Condominio:
-    def __init__(self, direccion, administrador, num_guardias, 
-                num_unidades_habitacionales, lista_unidades,
-                lista_residentes, lista_personal_mantenimiento, id_condominio):
+    def __init__(self,direccion, administrador,
+                num_unidades_habitacionales, banco, numero_cuenta):
 
         self.direccion = direccion
-        self.lista_administrador = administrador #recibe nombre de administrador
-        self.num_guardias = num_guardias
+        self.lista_administrador = administrador #recibe lista de administrador
         self.lista_guardias = []
+
         self.num_unidades_habitacionales = num_unidades_habitacionales
-        self.lista_unidades = lista_unidades
-       # self.cuenta_corriente = cuenta_corriente
+        self.lista_unidades = []
+        self.__genera_numeracion()
+        
+        CuentaCorriente.__init__(self,banco, numero_cuenta)
+
         self.registro_gasto_comun = {} #diccionario { "mes": monto de gasto comun}
         self.lista_residente = []
-        self.lista_personal_mantenimiento = lista_personal_mantenimiento
-        #self.id = uuid.uuid4() 
-        self.id = id_condominio
-        
+        self.lista_personal_mantenimiento = []
+        self.id = uuid.uuid4()
+
+
+    def __genera_numeracion(self):
+        for dpto in range(1,self.num_unidades_habitacionales):
+            for piso in range(2):
+                self.lista_unidades.append(str(piso)+str(0)+str(dpto))
+
     def get_direccion(self):
         # retorna direccion
         return self.direccion
@@ -25,21 +55,19 @@ class Condominio:
     def set_direccion(self, direccion_nueva):
         # cambia la direccion por una nueva
         self.direccion = direccion_nueva
-    
+
     def set_administrador(self, administrador_extraer, administrador_incluir):
         # cambia un administrador por uno nuevo de la lista_administrador
         self.lista_administrador.remove(administrador_extraer)
         self.lista_administrador.append(administrador_incluir)
-    
-    def get_administrador(self):
+
+    def get_administradores(self):
         # retorna lista de administradores
         return self.lista_administrador
     
     def agregar_guardia(self, nuevo_guardia):
         #agregar guardia a lista_guardia
-        #considerar numero de guardia predefinido >> num_guardia <<
-        self.lista_guardias.append(nuevo_guardia)
-        
+        self.lista_guardias.append(nuevo_guardia)  
     
     def del_guardia(self, rut_guardia):
         #borra el guardia de la lista_guardia
@@ -54,24 +82,18 @@ class Condominio:
         return self.lista_guardias
         # retorna lista de los guardias agregados
     
-    def get_tipo_unidades(self):
+    def get_unidades(self):
         return self.lista_unidades
         # retorna la lista de las unidades habitacionales
 
-    
-    def agregar_residente(self):
-        #agregar residente a lista_residente
-        pass
-    
     def agregar_personal_mantenimiento(self, nuevo_personal_mantenimiento):
         self.lista_personal_mantenimiento.append(nuevo_personal_mantenimiento)
         #agregar personal a lista_personal mantenimiento
-    
+
     def calcular_gasto_comun(self, num_unidades_habitacionales,valor): #cálculo aproximado mientras agregamos sueldos y gastos
         return valor / num_unidades_habitacionales
         #calcular gasto comun del condominio
 
-    
     def imprimir_lista_personal(self):
         print("Lista Personal Condominio")
         print("")
@@ -82,7 +104,19 @@ class Condominio:
             print("Lista Guardias: ", guardia.nombre)
         print("")
         for personal_mantenimiento in self.lista_personal_mantenimiento:
-            print("Lista Personal Mantenimiento: ", personal_mantenimiento)    
+            print("Lista Personal Mantenimiento: ", personal_mantenimiento) 
+
+
+    def agregar_residente(self, nombre):
+        #agregar residente a lista_residente
+        self.lista_residente.append(nombre)
+    
+    
+    
+    
+
+    
+       
 
         #imprime lista completa del personal del condominio 
 
