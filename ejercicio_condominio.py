@@ -9,12 +9,13 @@ import Condominio as cd
 guardia1 = cd.Guardia("joao", "guzman", "19124333-1", "las brisas")
 
 
-condominio_vertical1 = cd.CondominioVertical("Las Brisas altas", "Av. mar s/n",["Donald Trump"], 30,"BCI","123456789")
+condominio_vertical1 = cd.CondominioVertical("Las Brisas altas", 
+            "Av. mar s/n",["Donald Trump"], 30,"BCI","123456789", 
+            10000, "Todo uso","Habitable",100000000, "104-53")
 
-print( condominio_vertical1.get_direccion() )
+print(condominio_vertical1.get_administrador())
 
-condominio_vertical1.agregar_guardia(guardia1)
-
-print(condominio_vertical1.get_guardias())
-
-#condominio vertical 1 no accede a los métodos de cuenta corriente
+#Imprimir la lista_unidades (numeracion dpto)
+dptos = condominio_vertical1.get_unidades()
+for dpto in dptos:
+    print(dpto.numero_identificador)

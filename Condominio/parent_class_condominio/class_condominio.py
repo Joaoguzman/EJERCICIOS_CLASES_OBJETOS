@@ -25,6 +25,30 @@ class CuentaCorriente:
         print("Muchos millones: ", self.saldo)
 
 
+class UnidadHabitacional:
+    
+    def __init__(self, numero_identificador):
+
+        self.numero_identificador = numero_identificador
+        self.metros_cuadrados = 100
+        self.lista_habitantes = []
+        self.num_vehiculos = 0 # ***** podria estar en condominio el numero total de estacionamientos
+        
+    
+    def agregar_habitante(self, nombre, apellido, rut):
+        #agrega un habitante nuevo a lista_habitante
+        self.lista_habitantes.append(tuple(nombre +" "+ apellido, rut))
+    
+    def aumentar_estacionamiento_1(self):
+        #agregar un vehiculo a lista de vehiculos
+        self.num_vehiculos = self.num_vehiculos + 1
+        print("Vehiculo agregado")
+    
+    def get_lista_habitantes(self):
+        # retirnar lista de habitantes de esta unidad habitacional
+        return lista_habitantes
+    
+    
 
 
 class Condominio:
@@ -39,7 +63,7 @@ class Condominio:
         self.lista_unidades = []
         self.__genera_numeracion()
         
-        CuentaCorriente.__init__(self,banco, numero_cuenta)
+        CuentaCorriente.__init__(self,banco, numero_cuenta) # composicion
 
         self.registro_gasto_comun = {} #diccionario { "mes": monto de gasto comun}
         self.lista_residente = []
@@ -48,9 +72,13 @@ class Condominio:
 
 
     def __genera_numeracion(self):
-        for dpto in range(1,self.num_unidades_habitacionales):
-            for piso in range(2):
-                self.lista_unidades.append(str(piso)+str(0)+str(dpto))
+        print("Generando unidades habitacionales")
+        piso = 2
+        for dpto in range(1,round(self.num_unidades_habitacionales/2)):
+            for j in range(2):
+                unidad =  UnidadHabitacional( str(piso) + str(j)+ str(0) + str(dpto)) # nosé
+                self.lista_unidades.append(unidad)
+            piso += 1
 
     def get_direccion(self):
         # retorna direccion

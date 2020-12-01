@@ -1,10 +1,10 @@
 #Creación de clases Guardia, UnidadHabitacional, CuentaCorriente con 3 atributos y 4 métodos.
 class Guardia:
-    def __init__(self, nombre, apellido, rut, nombre_condominio):
+    def __init__(self, nombre, apellido, rut, lugar_de_trabajo):
         self.nombre = nombre
         self.apellido = apellido
         self.rut = rut
-        self.nombre_condominio = nombre_condominio
+        self.lugar_de_trabajo= lugar_de_trabajo
         self.inicio_jornada = []
         self.fin_jornada = []
         self.registro = {}
