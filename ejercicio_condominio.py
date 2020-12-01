@@ -17,5 +17,25 @@ print(condominio_vertical1.get_administrador())
 
 #Imprimir la lista_unidades (numeracion dpto)
 dptos = condominio_vertical1.get_unidades()
-for dpto in dptos:
-    print(dpto.numero_identificador)
+#for dpto in dptos:
+ #   print(dpto.numero_identificador)
+
+
+print(condominio_vertical1.calcular_gasto_comun(5000000))
+condominio_vertical1.ver_informacion() #poliformismo
+
+condominio_vertical1.agregar_guardia(guardia1)
+condominio_vertical1.agregar_guardia(guardia1)
+condominio_vertical1.agregar_guardia(guardia1)
+guardias= condominio_vertical1.get_guardias()
+
+for guardia in guardias:
+    print(guardia.nombre, guardia.apellido, guardia.rut)
+
+condominio_vertical1.agregar_residente("Piter Cid")
+print(condominio_vertical1.lista_residente)
+
+condominio_vertical1.agregar_habitante("Daniela","13.984-678-k", "Corvalan", "8107")
+for habitante in condominio_vertical1.lista_unidades:
+    print(habitante.numero_identificador)
+    print(habitante.lista_habitantes)

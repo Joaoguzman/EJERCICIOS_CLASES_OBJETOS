@@ -37,7 +37,7 @@ class UnidadHabitacional:
     
     def agregar_habitante(self, nombre, apellido, rut):
         #agrega un habitante nuevo a lista_habitante
-        self.lista_habitantes.append(tuple(nombre +" "+ apellido, rut))
+        self.lista_habitantes.append(nombre +" "+ apellido +" "+ rut)
     
     def aumentar_estacionamiento_1(self):
         #agregar un vehiculo a lista de vehiculos
@@ -46,7 +46,7 @@ class UnidadHabitacional:
     
     def get_lista_habitantes(self):
         # retirnar lista de habitantes de esta unidad habitacional
-        return lista_habitantes
+        return self.lista_habitantes
     
     
 
@@ -121,8 +121,8 @@ class Condominio:
         self.lista_personal_mantenimiento.append(nuevo_personal_mantenimiento)
         #agregar personal a lista_personal mantenimiento
 
-    def calcular_gasto_comun(self, num_unidades_habitacionales,valor): #cálculo aproximado mientras agregamos sueldos y gastos
-        return valor / num_unidades_habitacionales
+    def calcular_gasto_comun(self,valor): #cálculo aproximado mientras agregamos sueldos y gastos
+        return valor / self.num_unidades_habitacionales
         #calcular gasto comun del condominio
 
     def imprimir_lista_personal(self):
@@ -142,6 +142,18 @@ class Condominio:
         #agregar residente a lista_residente
         self.lista_residente.append(nombre)
     
+    def ver_informacion(self):
+        print("Id: ", self.id)
+        print("Dirección: ", self.direccion)
+        print("Administrador: ", self.lista_administrador)
+
+    def agregar_habitante(self, nombre, rut, apellido, departamento):
+        for depto in self.lista_unidades:
+            if depto.numero_identificador == departamento:
+                depto.agregar_habitante(nombre, apellido, rut)
+                print("Habitante Agregado")
+    
+
     
     
     

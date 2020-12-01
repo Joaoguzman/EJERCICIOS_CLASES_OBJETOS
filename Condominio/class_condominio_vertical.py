@@ -19,8 +19,8 @@ class CondominioVertical(Condominio, Terreno):
     def get_total_unidades(self):
         return self.num_unidades_habitacionales
 
-    def informacion(self):
+    def ver_informacion(self):
         print("Nombre: ", self.nombre)
-        print("Administradors: ", self.lista_administrador)
+        print("Administrador: ", self.lista_administrador)
         print("Direccion: ", self.direccion)
 
