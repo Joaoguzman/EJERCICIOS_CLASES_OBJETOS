@@ -38,6 +38,8 @@ cliente4.abonar(400)
 scotiabank.abonos_totales()
 
 scotiabank.mostrar_saldo_institucional()
+
+#Paso 2
 #for persona in lista_cliente:             s_1:
 #    scotiabank.agregar_cliente(persona.nombre_cliente, persona.saldo_cliente)
 #    print(f'Se agrego a {persona.nombre_cliente}')
